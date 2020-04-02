@@ -11,18 +11,34 @@ require('./util/HighChartTheme');
 function App() {
   return (
     <div className="App">
+      <h1>How Long Will The Coronavirus Last?</h1>
+
+      <p>
+        This model tracks the new coronavirus cases in the United States, analyzes the growth rate,
+        and predics the eventual course of the pandemic within the US. Raw data for daily new cases
+        comes from{' '}
+        <a
+          href="https://www.worldometers.info/coronavirus/country/us/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Worldometer
+        </a>
+        .
+      </p>
+
       <Async promiseFn={fetchData}>
         {({ data, err, isLoading }) => {
           if (isLoading) return 'Loading...';
           if (err) return `Something went wrong: ${err.message}`;
           if (data)
             return (
-              <>
+              <div className="chart-container">
                 <TotalCases data={data} />
                 <NewCases data={data} />
                 <GrowthRate data={data} />
                 <Prediction data={data} />
-              </>
+              </div>
             );
         }}
       </Async>

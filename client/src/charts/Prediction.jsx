@@ -1,6 +1,8 @@
-import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import React from 'react';
+import Constants from 'util/Constants';
+import Utility from 'util/Utility';
 import BaseOptions from './BaseOptions';
 
 const id = 'chart-prediction';
@@ -8,17 +10,27 @@ const id = 'chart-prediction';
 export default function Prediction({ data }) {
   const prediction = extrapolate(data);
   console.log('Prediction', prediction);
+  const last = Utility.getLastRecord(data);
+  const date = Utility.formatDate(last.date);
+  const rate = Utility.formatPercent(last.rate);
+  const rate2 = Utility.formatPercent(last.rate2);
 
   const options = {
     ...BaseOptions,
     chart: {
       type: 'spline',
+      zoomType: 'x',
     },
     title: {
       text: 'Predicted Cases',
     },
     xAxis: {
       type: 'datetime',
+    },
+    yAxis: {
+      title: {
+        enabled: false,
+      },
     },
     legend: {
       enabled: false,
@@ -31,17 +43,32 @@ export default function Prediction({ data }) {
   };
 
   return (
-    <div className="Prediction chart" id={id}>
+    <section className="Prediction chart" id={id}>
+      <h2>Prediction, As Of {date}</h2>
+
+      <div className="summary">
+        <p>
+          This chart shows the predicted number of active cases over time, based on a
+          <em>Daily Growth Rate</em> of <b>{rate}</b> and a <em>Δ Growth</em> of
+          <b>{rate2}</b> .
+        </p>
+      </div>
+
       <HighchartsReact highcharts={Highcharts} options={options} />
-    </div>
+    </section>
   );
 }
 
 function extrapolate(data) {
   const tMax = 365 * 2;
 
-  const resolutionDays = 20; // the number of days for a case to resolve
+  const resolutionDays = Constants.RESOLUTION_DAYS; // the number of days for a case to resolve
   const resolvedCount = 1; // the number of cases before we end the graph
+
+  const last = Utility.getLastRecord(data);
+  const date = Utility.formatDate(last.date);
+  const rate = Utility.formatPercent(last.rate);
+  const rate2 = Utility.formatPercent(last.rate2);
 
   if (data.length) {
     const results = [...data];

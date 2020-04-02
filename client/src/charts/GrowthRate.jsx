@@ -8,7 +8,6 @@ import Constants from 'util/Constants';
 const id = 'chart-growth-rate';
 
 export default function GrowthRate({ data }) {
-  console.log('GrowthRate', data);
   const last = Utility.getLastRecord(data);
   const date = Utility.formatDate(last.date);
   const rate = Utility.formatPercent(last.rate);
@@ -52,19 +51,16 @@ export default function GrowthRate({ data }) {
           As of {date}, the <em>Daily Growth Rate</em> is <b>{rate}</b> and the <em>Δ Growth</em> is{' '}
           <b>{rate2}</b> .
         </p>
-        <p>
-          <ul>
-            <li>
-              <em>Daily Growth Rate</em> is the change from one day to the next. Total cases are
-              first smoothed using a moving average with a window size of {Constants.WINDOW_SIZE}{' '}
-              days.
-            </li>
-            <li>
-              <em>Δ Growth</em> is the change in the growth rate itself, i.e. the second derivative
-              of the number of cases.
-            </li>
-          </ul>
-        </p>
+        <ul>
+          <li>
+            <em>Daily Growth Rate</em> is the change from one day to the next. Total cases are first
+            smoothed using a moving average with a window size of {Constants.WINDOW_SIZE} days.
+          </li>
+          <li>
+            <em>Δ Growth</em> is the change in the growth rate itself, i.e. the second derivative of
+            the number of cases.
+          </li>
+        </ul>
       </div>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </section>

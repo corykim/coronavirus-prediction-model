@@ -7,7 +7,6 @@ import Utility from 'util/Utility';
 const id = 'chart-new-cases';
 
 export default function NewCases({ data }) {
-  console.log('NewCases', data);
   const last = Utility.getLastRecord(data);
   const date = Utility.formatDate(last.date);
   const newCases = Utility.formatInteger(last.new_cases);

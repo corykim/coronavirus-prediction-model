@@ -50,5 +50,13 @@ body {
 
   section.Prediction {
     flex-basis: 100%;
+
+    .color-code {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      margin-bottom: -0.2rem;
+      border: thin solid black;
+    }
   }
 }

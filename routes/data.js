@@ -79,7 +79,7 @@ router.get("/", function(req, res, next) {
       res.json(data);
     })
     .catch(e => {
-      console.log("ERROR", e);
+      console.error("ERROR", e);
       throw e;
     });
 });

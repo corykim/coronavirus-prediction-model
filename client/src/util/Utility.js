@@ -7,7 +7,7 @@ class Utility {
     }
   }
 
-  static formatDate(value) {
+  static formatDate(value, dateFormat = DATE_FORMAT_LONG) {
     return dateFormat.format(value);
   }
 
@@ -22,9 +22,15 @@ class Utility {
 
 export default Utility;
 
-const dateFormat = new Intl.DateTimeFormat('default', {
+export const DATE_FORMAT_LONG = new Intl.DateTimeFormat('default', {
   year: 'numeric',
   month: 'long',
+  day: 'numeric',
+});
+
+export const DATE_FORMAT_SHORT = new Intl.DateTimeFormat('default', {
+  year: 'numeric',
+  month: 'numeric',
   day: 'numeric',
 });
 

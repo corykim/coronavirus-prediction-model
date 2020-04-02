@@ -7,7 +7,6 @@ import Utility from '../util/Utility';
 const id = 'chart-total-cases';
 
 export default function TotalCases({ data }) {
-  console.log('TotalCases', data);
   const last = Utility.getLastRecord(data);
   const date = Utility.formatDate(last.date);
   const total = Utility.formatInteger(last.total_cases);

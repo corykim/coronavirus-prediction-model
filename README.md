@@ -13,7 +13,11 @@ This model uses the following techniques:
 - Take a moving average of total new cases over a seven-day window.
 - Compute the daily growth rate (_r_) of the coronavirus.
 - Compute the second derivative, (_Δr_). This value should reflect measures that society has taken to reduce the spread of the virus, or "flatten the curve."
-- Extend the sample time series by computing daily growth rate (r) for future dates, based on _Δr_.
+- Extend the sample time series by:
+  - Computing daily growth rate (r) for future dates using the formula r*t* = r*0* x (1 + Δr)^t
+  - Computing the new cases using the formula p*t* = p*0* x (1 + r)^t
+  - Subtracting the resolved cases, which would be the total active cases from 20 days prior. The resolved cases are those patients
+    who would have either recovered or died.
 
 ## Deployment
 

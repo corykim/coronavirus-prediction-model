@@ -122,6 +122,48 @@ export default function Prediction({ data }) {
           </li>
         </ul>
       </div>
+      <div className="description">
+        <h2>How The Model Works</h2>
+        <p>This model uses the following techniques:</p>
+        <ol>
+          <li>Start with the daily new cases as raw data.</li>
+          <li>Compute the total new cases over time.</li>
+          <li>Take a moving average of total new cases over a seven-day window.</li>
+          <li>
+            Compute the daily growth rate (<em>r</em>) of the coronavirus.
+          </li>
+          <li>
+            Compute the second derivative, (<em>Δr</em>). This value should reflect measures that
+            society has taken to reduce the spread of the virus, or "flatten the curve."
+          </li>
+          <li>
+            Extend the sample time series by:
+            <ol>
+              <li>
+                Computing daily growth rate (r) for future dates, using the formula:
+                <div>
+                  r<sub>t</sub> ={' '}
+                  <em>
+                    r<sub>0</sub>
+                  </em>
+                  (1 + <em>Δr</em>)<sup>t</sup>
+                </div>
+              </li>
+              <li>
+                Compute the total new cases using the formula{' '}
+                <div>
+                  p<sub>t</sub> = p<sub>0</sub>(1 + <em>r</em>)<sup>t</sup>
+                </div>
+              </li>
+              <li>
+                Subtract the estimated resolved cases by subtracting the active cases from{' '}
+                {Constants.RESOLUTION_DAYS} days prior. These cases would have been resolved either
+                by the patient's recovery or death.
+              </li>
+            </ol>
+          </li>
+        </ol>
+      </div>
     </section>
   );
 }

@@ -99,7 +99,7 @@ export default function Prediction({ data }) {
       <div className="summary">
         <p>
           This chart shows the predicted number of active cases over time, based on a{' '}
-          <em>Daily Growth Rate</em> of <b>{rate}</b> and a <em>Δ Growth</em> of <b>{rate2}</b> .
+          <em>Daily Growth Rate</em> of <b>{rate}</b> and a <em>ΔGrowth</em> of <b>{rate2}</b> .
         </p>
       </div>
 

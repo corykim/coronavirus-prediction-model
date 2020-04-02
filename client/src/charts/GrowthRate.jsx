@@ -37,7 +37,7 @@ export default function GrowthRate({ data }) {
         data: data.map((record) => [record.date, record.rate]),
       },
       {
-        name: 'Δ Growth',
+        name: 'ΔGrowth',
         data: data.map((record) => [record.date, record.rate2]),
       },
     ],
@@ -48,7 +48,7 @@ export default function GrowthRate({ data }) {
       <h2>Growth Rates</h2>
       <div className="summary">
         <p>
-          As of {date}, the <em>Daily Growth Rate</em> is <b>{rate}</b> and the <em>Δ Growth</em> is{' '}
+          As of {date}, the <em>Daily Growth Rate</em> is <b>{rate}</b> and the <em>ΔGrowth</em> is{' '}
           <b>{rate2}</b> .
         </p>
         <ul>
@@ -57,7 +57,7 @@ export default function GrowthRate({ data }) {
             smoothed using a moving average with a window size of {Constants.WINDOW_SIZE} days.
           </li>
           <li>
-            <em>Δ Growth</em> is the change in the growth rate itself, i.e. the second derivative of
+            <em>ΔGrowth</em> is the change in the growth rate itself, i.e. the second derivative of
             the number of cases.
           </li>
         </ul>

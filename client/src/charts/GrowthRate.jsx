@@ -37,7 +37,7 @@ export default function GrowthRate({ data }) {
         data: data.map((record) => [record.date, record.rate]),
       },
       {
-        name: 'Second Derivative',
+        name: 'Δ Growth',
         data: data.map((record) => [record.date, record.rate2]),
       },
     ],

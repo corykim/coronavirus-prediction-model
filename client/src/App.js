@@ -15,8 +15,8 @@ function App() {
 
       <p>
         This model tracks the new coronavirus cases in the United States, analyzes the growth rate,
-        and predics the eventual course of the pandemic within the US. Raw data for daily new cases
-        comes from{' '}
+        and predicts the eventual course of the pandemic within the United States. The raw data for
+        daily new cases comes from{' '}
         <a
           href="https://www.worldometers.info/coronavirus/country/us/"
           target="_blank"

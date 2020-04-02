@@ -13,11 +13,12 @@
 /* global document */
 // Load the fonts
 import Highcharts from 'highcharts';
+const fontFamily = 'Abel';
 
 Highcharts.createElement(
   'link',
   {
-    href: 'https://fonts.googleapis.com/css?family=Unica+One',
+    href: `https://fonts.googleapis.com/css2?family=${fontFamily.replace(' ', '+')}&display=swap`,
     rel: 'stylesheet',
     type: 'text/css',
   },
@@ -47,7 +48,7 @@ Highcharts.theme = {
       ],
     },
     style: {
-      fontFamily: "'Unica One', sans-serif",
+      fontFamily: `'${fontFamily}', sans-serif`,
     },
     plotBorderColor: '#606063',
   },

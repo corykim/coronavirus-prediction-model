@@ -2,7 +2,7 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import React from 'react';
 import Constants from 'util/Constants';
-import Utility, { DATE_FORMAT_SHORT } from 'util/Utility';
+import Utility from 'util/Utility';
 import BaseOptions from './BaseOptions';
 require('highcharts/modules/annotations')(Highcharts);
 
@@ -19,7 +19,7 @@ export default function Prediction({ data }) {
 
   const colorInterval = '#888888';
   const colorPredictionStart = '#22ff22';
-  const colorPeak = '#999944';
+  const colorPeak = '#cc3333';
 
   const plotLines = [];
   const basePlotLine = {
@@ -66,7 +66,7 @@ export default function Prediction({ data }) {
       zoomType: 'x',
     },
     title: {
-      text: 'Predicted Cases',
+      text: 'Predicted Active Cases',
     },
     xAxis: {
       type: 'datetime',
@@ -90,7 +90,7 @@ export default function Prediction({ data }) {
 
   return (
     <section className="Prediction chart" id={id}>
-      <h2>Prediction, As Of {date}</h2>
+      <h2>Model Prediction, as of {date}</h2>
 
       <div className="summary">
         <p>
@@ -101,7 +101,7 @@ export default function Prediction({ data }) {
 
       <HighchartsReact highcharts={Highcharts} options={options} />
       <div className="legend">
-        The vertical lines indicate salient points within the prediction.
+        The vertical lines indicate salient points within the model's prediction:
         <ul>
           <li>
             The green{' '}
@@ -109,11 +109,11 @@ export default function Prediction({ data }) {
             indicates the starting point of the prediction, which is {date}.
           </li>
           <li>
-            The khaki <div className="color-code" style={{ backgroundColor: colorPeak }} /> line
+            The red <div className="color-code" style={{ backgroundColor: colorPeak }} /> line
             indicates the peak number of active cases, if the curve peaks at all.
           </li>
           <li>
-            The grey lines <div className="color-code" style={{ backgroundColor: colorInterval }} />{' '}
+            The grey <div className="color-code" style={{ backgroundColor: colorInterval }} /> lines
             indicate intervals at which the number of cases double or half.
           </li>
         </ul>

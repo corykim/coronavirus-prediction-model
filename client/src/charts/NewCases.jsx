@@ -24,6 +24,7 @@ export default function NewCases({ data }) {
       type: 'datetime',
     },
     yAxis: {
+      floor: 0,
       title: {
         enabled: false,
       },
@@ -44,7 +45,7 @@ export default function NewCases({ data }) {
       <h2>Daily New Cases</h2>
       <div className="summary">
         <p>
-          On {date}, there were {newCases} new cases of coronavirus in the United States.
+          On {date}, there were <b>{newCases}</b> new cases of coronavirus in the United States.
         </p>
       </div>
       <HighchartsReact highcharts={Highcharts} options={options} />

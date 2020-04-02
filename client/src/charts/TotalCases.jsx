@@ -44,7 +44,8 @@ export default function TotalCases({ data }) {
       <h2>Total Cases</h2>
       <div className="summary">
         <p>
-          As of {date}, there have been {total} total cases of coronavirus in the United States.
+          As of {date}, there have been <b>{total}</b> total cases of coronavirus in the United
+          States.
         </p>
       </div>
       <HighchartsReact highcharts={Highcharts} options={options} />

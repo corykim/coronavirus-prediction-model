@@ -104,17 +104,16 @@ export default function Prediction({ data }) {
         The vertical lines indicate salient points within the model's prediction:
         <ul>
           <li>
-            The green{' '}
-            <div className="color-code" style={{ backgroundColor: colorPredictionStart }} /> line
-            indicates the starting point of the prediction, which is {date}.
+            <div className="color-code" style={{ backgroundColor: colorPredictionStart }} />
+            The green line indicates the starting point of the prediction, which is {date}.
           </li>
           <li>
-            The red <div className="color-code" style={{ backgroundColor: colorPeak }} /> line
-            indicates the peak number of active cases, if the curve peaks at all.
+            <div className="color-code" style={{ backgroundColor: colorPeak }} />
+            The red line indicates the peak number of active cases, if the curve peaks at all.
           </li>
           <li>
-            The grey <div className="color-code" style={{ backgroundColor: colorInterval }} /> lines
-            indicate intervals at which the number of cases double or half.
+            <div className="color-code" style={{ backgroundColor: colorInterval }} />
+            The grey lines indicate intervals at which the number of cases double or half.
           </li>
         </ul>
       </div>

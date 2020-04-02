@@ -17,6 +17,10 @@ export default function Prediction({ data }) {
   const rate = Utility.formatPercent(last.rate);
   const rate2 = Utility.formatPercent(last.rate2);
 
+  const predictionStartDate = new Date(last.date);
+  predictionStartDate.setDate(predictionStartDate.getDate() + 1);
+  const predictionStart = Utility.formatDate(predictionStartDate);
+
   const colorInterval = '#888888';
   const colorPredictionStart = '#22ff22';
   const colorPeak = '#cc3333';
@@ -105,7 +109,8 @@ export default function Prediction({ data }) {
         <ul>
           <li>
             <div className="color-code" style={{ backgroundColor: colorPredictionStart }} />
-            The green line indicates the starting point of the prediction, which is {date}.
+            The green line indicates the starting point of the prediction, which is{' '}
+            {predictionStart}.
           </li>
           <li>
             <div className="color-code" style={{ backgroundColor: colorPeak }} />

@@ -76,10 +76,12 @@ router.get("/", function(req, res, next) {
       // strip out empty rows
       data = json.filter(record => record.date);
       data = calculateStatistics(data);
+
+      res.set("Cache-Control", "max-age=60");
       res.json(data);
     })
     .catch(e => {
-      console.error("ERROR", e);
+      console.error(`Error loading data from path ${filePath}`, e);
       throw e;
     });
 });
